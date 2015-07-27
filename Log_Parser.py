@@ -36,9 +36,9 @@ def search():
                 header = os.path.basename(file_name).split(".")[0] + "\n"
                 str_output = ""
                 for line in file:
-                    line = line.decode()
-                    if patern in line:
-                        str_output += line[:-1]
+                    line = line.decode(encoding="cp1251")
+                    if patern in line.lower():
+                        str_output += line
                 if str_output:
                     str_output = header + str_output
                     print(str_output, file=out)
@@ -51,9 +51,9 @@ def search():
                 header = os.path.basename(file_name).split(".")[0] + "\n"
                 str_output = ""
                 for line in file:
-                    line = line.decode()
+                    line = line.decode(encoding="cp1251")
                     if re.match(p, line):
-                        str_output += line[:-1]
+                        str_output += line
                 if str_output:
                     str_output = header + str_output
                     print(str_output, file=out)
