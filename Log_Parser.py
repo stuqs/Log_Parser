@@ -30,14 +30,14 @@ def search():
         exit()
     master.quit()
     if var1.get() == 0:
-        for file_name in sorted(files):
+        for file_name in sorted(files, reverse=True):
             with open(file_name, mode='rb') as file:
 
                 header = os.path.basename(file_name).split(".")[0] + "\n"
                 str_output = ""
                 for line in file:
                     line = line.decode(encoding="cp1251")
-                    if patern in line.lower():
+                    if patern in line:
                         str_output += line
                 if str_output:
                     str_output = header + str_output
@@ -45,7 +45,7 @@ def search():
 
     else:
         p = re.compile(patern)
-        for file_name in sorted(files):
+        for file_name in sorted(files, reverse=True):
             with open(file_name, mode='rb') as file:
 
                 header = os.path.basename(file_name).split(".")[0] + "\n"
